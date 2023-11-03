@@ -7,10 +7,9 @@ import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {
-    path: 'trading',
+    path: '',
     children: [
-      { path: '', component: HomeComponent },
-
+      { path: 'home', component: HomeComponent },
     ]
   }
   // D'autres routes peuvent être ajoutées ici

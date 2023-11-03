@@ -3,23 +3,17 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'banking',
-    loadChildren: () => import('../banking/banking-module/banking.module').then(m => m.BankingModule)
-  },
-  {
-    path: 'trading',
-    loadChildren: () => import('../trading/trading.routing').then(m => m.TradingRoutingModule)
+    path: '',
+    children: [
+      { path: 'banking', loadChildren:() => import('../banking/banking.routing').then(m => m.BankingRoutingModule) }
+    ]
   },
   {
     path: '',
-    redirectTo: '/banking',
-    pathMatch: 'full'
+    children: [
+      { path: 'trading', loadChildren:() => import('../trading/trading.routing').then(m => m.TradingRoutingModule) }
+    ]
   },
-  // D'autres routes de niveau application peuvent être ajoutées ici
-  {
-    path: '**',
-    redirectTo: '/banking'
-  }
 ];
 
 @NgModule({
